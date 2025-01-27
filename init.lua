@@ -972,6 +972,9 @@ require('lazy').setup({
         'typescript',
         'agda',
         'haskell',
+        'javascript',
+        'tsx',
+        'css',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -1010,6 +1013,13 @@ require('lazy').setup({
 
   -- { 'mfussenegger/nvim-jdtls' },
 
+  {
+    'olrtg/nvim-emmet',
+    config = function()
+      vim.keymap.set({ 'n', 'v' }, '<leader>xe', require('nvim-emmet').wrap_with_abbreviation)
+    end,
+  },
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
@@ -1046,3 +1056,16 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.opt.cursorline = false
+
+vim.g.matchup_enabled = 0
+
+require('mini.pairs').setup {
+  highlight_matching = false,
+}
+
+-- for some reason, it's the only way it works :/
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    vim.cmd 'NoMatchParen'
+  end,
+})
