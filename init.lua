@@ -1061,3 +1061,27 @@ vim.opt.cursorline = false
 
 vim.opt.tabstop = 4
 vim.cmd 'colorscheme gruvbox'
+
+vim.opt.fillchars = {
+  vert = '|',
+  vertleft = '|',
+  vertright = '|',
+  verthoriz = '|',
+}
+
+require('neo-tree').setup {
+  window = {
+    position = 'left',
+    mappings = {},
+    border = 'single',
+  },
+}
+
+vim.opt.signcolumn = 'auto:1'
+vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none' })
+
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'none' })
+
+vim.api.nvim_set_hl(0, 'ModeMsg', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'MsgArea', { bg = 'none' })
