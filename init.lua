@@ -658,6 +658,17 @@ require('lazy').setup({
             },
           },
         },
+
+        solargraph = {
+          filetypes = { 'ruby' },
+          settings = {
+            solargraph = {
+              diagnostics = true,
+              completion = true,
+              formatting = true,
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -977,6 +988,7 @@ require('lazy').setup({
         'javascript',
         'tsx',
         'css',
+        'ruby',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
