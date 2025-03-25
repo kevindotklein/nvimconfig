@@ -228,6 +228,12 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+  --
+
+  'hrsh7th/nvim-cmp',
+  'kdheepak/cmp-latex-symbols',
+
+  --
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -1098,3 +1104,18 @@ vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'none' })
 
 vim.api.nvim_set_hl(0, 'ModeMsg', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'MsgArea', { bg = 'none' })
+
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+local cmp = require 'cmp'
+cmp.setup {
+  sources = {
+    { name = 'latex_symbols' }, -- Adiciona suporte para símbolos LaTeX
+    { name = 'buffer' }, -- Completa palavras do buffer
+  },
+  mapping = cmp.mapping.preset.insert {
+    ['<Tab>'] = cmp.mapping.confirm { select = true }, -- Insere o símbolo ao pressionar Tab
+  },
+}
