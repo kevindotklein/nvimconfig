@@ -819,6 +819,7 @@ require('lazy').setup({
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert {
+          ['<Tab>'] = cmp.mapping.confirm { select = true },
           -- Select the [n]ext item
           ['<C-n>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
@@ -875,6 +876,9 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+
+          { name = 'latex_symbols' },
+          { name = 'buffer' },
         },
       }
     end,
@@ -1108,14 +1112,3 @@ vim.api.nvim_set_hl(0, 'MsgArea', { bg = 'none' })
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
-local cmp = require 'cmp'
-cmp.setup {
-  sources = {
-    { name = 'latex_symbols' }, -- Adiciona suporte para símbolos LaTeX
-    { name = 'buffer' }, -- Completa palavras do buffer
-  },
-  mapping = cmp.mapping.preset.insert {
-    ['<Tab>'] = cmp.mapping.confirm { select = true }, -- Insere o símbolo ao pressionar Tab
-  },
-}
