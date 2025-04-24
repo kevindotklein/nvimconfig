@@ -651,6 +651,8 @@ require('lazy').setup({
         hls = {},
         --
 
+        dockerls = {},
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
